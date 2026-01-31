@@ -3,149 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBQ Wings | Alitas BBQ</title>
-
+    <title>Lotería Simulada</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #1c1c1c;
-            color: #f2f2f2;
-            line-height: 1.6;
-        }
-
-        header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-            url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             text-align: center;
+            padding: 20px;
         }
-
-        header h1 {
-            font-size: 3.5rem;
-            color: #ff9800;
-        }
-
-        header p {
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-
-        section {
-            padding: 60px 10%;
-        }
-
-        h2 {
-            color: #ff9800;
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-
-        .about p {
-            max-width: 800px;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: #2a2a2a;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
         }
-
-        .card div {
-            padding: 20px;
+        button:hover {
+            background-color: #45a049;
         }
-
-        footer {
-            background-color: #000;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
+        .numbers {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #333;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div>
-        <h1>BBQ Wings</h1>
-        <p>Alitas BBQ hechas con fuego, tradición y carácter</p>
+    <div class="container">
+        <h1>Lotería Simulada</h1>
+        <p>Haz clic en el botón para generar números aleatorios de lotería (6 números del 1 al 49).</p>
+        <button onclick="generateNumbers()">Generar Números</button>
+        <div class="numbers" id="lotteryNumbers">Números: -</div>
     </div>
-</header>
 
-<section class="about">
-    <h2>Sobre Nosotros</h2>
-    <p>
-        BBQ Wings es un restaurante de alitas BBQ fundado y administrado por <strong>Alya</strong>. 
-        Nuestra cocina respeta la tradición del buen BBQ, combinando recetas clásicas con una visión moderna.
-    </p>
-</section>
-
-<section class="menu">
-    <h2>Menú Destacado</h2>
-    <div class="menu-grid">
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1555992336-cbfdb9f1f1d4?auto=format&fit=crop&w=800&q=80" alt="Alitas BBQ Clásicas">
-            <div>
-                <h3>Alitas BBQ Clásicas</h3>
-                <p>Salsa BBQ artesanal cocinada a fuego lento.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Alitas Picantes">
-            <div>
-                <h3>Alitas Picantes</h3>
-                <p>Crujientes, intensas y con picante real.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1625944525533-473f1c2e61b4?auto=format&fit=crop&w=800&q=80" alt="Combo BBQ">
-            <div>
-                <h3>Combo BBQ</h3>
-                <p>Alitas, papas fritas y bebida fría.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="contact">
-    <h2>Contacto</h2>
-    <p>
-        📍 Panamá<br>
-        📧 alyasirzelaya5@amagz.store<br>
-        📞 +507 69373565
-    </p>
-</section>
-
-<footer>
-    © 2026 BBQ Wings | Propiedad de Alya
-</footer>
-
+    <script>
+        function generateNumbers() {
+            let numbers = [];
+            while (numbers.length < 6) {
+                let num = Math.floor(Math.random() * 49) + 1;
+                if (!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+            numbers.sort((a, b) => a - b);
+            document.getElementById('lotteryNumbers').innerText = 'Números: ' + numbers.join(', ');
+        }
+    </script>
 </body>
 </html>
